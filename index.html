@@ -1,0 +1,761 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="https://www.w3.org/1999/xhtml">
+    <head>
+        <meta http–equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http–equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
+            rel="stylesheet"
+        />
+        <title>STC Snap Event</title>
+        <meta name="color-scheme" content="light dark" />
+        <meta name="supported-color-schemes" content="light dark" />
+        <style type="text/css">
+            :root {
+                color-scheme: light dark;
+                supported-color-schemes: light dark;
+            }
+        </style>
+        <style media="all" type="text/css">
+            * {
+                box-sizing: border-box;
+                color: inherit;
+                font-family: inherit;
+            }
+            body {
+                color: #ebebeb;
+                /* min-width: 485px; */
+                font-family: "Montserrat", sans-serif;
+            }
+            table {
+                /* min-width: 485px; */
+                border-spacing: 0;
+                font-family: "Montserrat", sans-serif;
+                font-size: 17px;
+                line-height: 23.8px;
+                padding-bottom: 20px;
+                color: #ebebeb;
+            }
+            td {
+                padding: 0 30px;
+            }
+            a {
+                text-decoration: none;
+                color: #000;
+                font-weight: 700;
+            }
+            button {
+                padding: 0;
+            }
+            .button {
+                width: 170px;
+                margin-left: auto;
+                padding: auto;
+            }
+            .button > * {
+                width: 100%;
+            }
+            .button > * > * {
+                width: 100%;
+            }
+            .wrapper {
+                table-layout: fixed;
+                width: 100%;
+                padding-bottom: 40px;
+            }
+            .webkit {
+                max-width: 595px;
+                min-width: 410px;
+                background-color: #1c1c1c;
+            }
+            .outer {
+                margin: 0 auto;
+                width: 100%;
+                border-spacing: 0;
+                overflow: hidden;
+                background-image: url("https://dl3.pushbulletusercontent.com/8haXXNFGFRpefWmLp8FMTFcLVSZaXQ1D/banner.png");
+                background-repeat: no-repeat;
+            }
+            .logo {
+                margin-top: 50px;
+            }
+            .logo > img {
+                height: 60px;
+            }
+            .divider {
+                width: 12ch;
+                height: 2.85px;
+                background: linear-gradient(#fff953, #fff953);
+                /* Fallback (could use .jpg/.png alternatively) */
+                background-color: #fff953;
+
+                /* SVG fallback for IE 9 (could be data URI, or could use filter) */
+                background-image: url(fallback-gradient.svg);
+
+                /* Safari 4, Chrome 1-9, iOS 3.2-4.3, Android 2.1-3.0 */
+                background-image: -webkit-gradient(
+                    linear,
+                    left top,
+                    right top,
+                    from(#fff953),
+                    to(#fff953)
+                );
+
+                /* Safari 5.1, iOS 5.0-6.1, Chrome 10-25, Android 4.0-4.3 */
+                background-image: -webkit-linear-gradient(
+                    left,
+                    #fff953,
+                    #fff953
+                );
+
+                /* Firefox 3.6 - 15 */
+                background-image: -moz-linear-gradient(left, #fff953, #fff953);
+
+                /* Opera 11.1 - 12 */
+                background-image: -o-linear-gradient(left, #fff953, #fff953);
+
+                /* Opera 15+, Chrome 25+, IE 10+, Firefox 16+, Safari 6.1+, iOS 7+, Android 4.4+ */
+                background-image: linear-gradient(to right, #fff953, #fff953);
+            }
+            .banner {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                /* min-width: 470px; */
+                margin-top: 20px;
+            }
+            .number {
+                color: lightblue;
+                /* font-style: normal; */
+                font-weight: 300;
+            }
+            .socials-logo {
+                width: 20px;
+                border-radius: 5px;
+            }
+            .icon {
+                margin-right: 10px;
+            }
+            .bottom-padding {
+                padding-bottom: 50px;
+            }
+            .position-relative {
+                position: relative;
+            }
+            .no-padding {
+                padding: 0;
+            }
+            .vertical-divider {
+                width: 2.85px;
+                background: linear-gradient(#fff953, #fff953);
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                min-height: 13ch;
+            }
+            .divider-cell {
+                position: relative;
+                padding-left: 30px;
+            }
+            .info-section {
+                padding-left: 20px;
+                padding-right: 0;
+            }
+            .final-section {
+                position: relative;
+                width: 100%;
+            }
+            .final-message {
+                position: absolute;
+                top: 10%;
+                padding-bottom: 70px;
+            }
+            .socials {
+                position: absolute;
+                bottom: 10%;
+            }
+            .two-col {
+                font-size: 0;
+                width: 100%;
+            }
+            .col {
+                display: inline-block;
+                vertical-align: top;
+                /* width: 100%;
+                min-width: 150px;
+                max-width: 250px; */
+            }
+            .col-1 {
+                max-width: max-content;
+                width: 70%;
+                min-width: 200px;
+            }
+            .col-2 {
+                width: 30%;
+                min-width: 200px;
+            }
+            .col-content-1 {
+                max-width: max-content;
+            }
+            .col-content-2 {
+                width: 30%;
+                min-width: 200px;
+            }
+        </style>
+        <style media="all" type="text/css" data-embed>
+            [data-ogsc] .body {
+                background-color: #1c1c1c !important;
+                color: #ebebeb !important;
+            }
+
+            [data-ogsc] h1,
+            [data-ogsc] h2,
+            [data-ogsc] h3,
+            [data-ogsc] p,
+            [data-ogsc] td {
+                color: #ebebeb !important;
+            }
+            [data-ogsc] .vertical-divider {
+                background: linear-gradient(#fff953, #fff953) !important;
+                /* Fallback (could use .jpg/.png alternatively) */
+                background-color: #fff953 !important;
+
+                /* SVG fallback for IE 9 (could be data URI, or could use filter) */
+                /* background-image: url(fallback-gradient.svg); */
+
+                /* Safari 4, Chrome 1-9, iOS 3.2-4.3, Android 2.1-3.0 */
+                background-image: -webkit-gradient(
+                    linear,
+                    left top,
+                    right top,
+                    from(#fff953),
+                    to(#fff953)
+                ) !important;
+
+                /* Safari 5.1, iOS 5.0-6.1, Chrome 10-25, Android 4.0-4.3 */
+                background-image: -webkit-linear-gradient(
+                    left,
+                    #fff953,
+                    #fff953
+                ) !important;
+
+                /* Firefox 3.6 - 15 */
+                background-image: -moz-linear-gradient(
+                    left,
+                    #fff953,
+                    #fff953
+                ) !important;
+
+                /* Opera 11.1 - 12 */
+                background-image: -o-linear-gradient(
+                    left,
+                    #fff953,
+                    #fff953
+                ) !important;
+
+                /* Opera 15+, Chrome 25+, IE 10+, Firefox 16+, Safari 6.1+, iOS 7+, Android 4.4+ */
+                background-image: linear-gradient(
+                    to right,
+                    #fff953,
+                    #fff953
+                ) !important;
+            }
+            [data-ogsc] .divider {
+                background: linear-gradient(#fff953, #fff953) !important;
+                /* Fallback (could use .jpg/.png alternatively) */
+                background-color: #fff953 !important;
+
+                /* SVG fallback for IE 9 (could be data URI, or could use filter) */
+                /* background-image: url(fallback-gradient.svg); */
+
+                /* Safari 4, Chrome 1-9, iOS 3.2-4.3, Android 2.1-3.0 */
+                background-image: -webkit-gradient(
+                    linear,
+                    left top,
+                    right top,
+                    from(#fff953),
+                    to(#fff953)
+                ) !important;
+
+                /* Safari 5.1, iOS 5.0-6.1, Chrome 10-25, Android 4.0-4.3 */
+                background-image: -webkit-linear-gradient(
+                    left,
+                    #fff953,
+                    #fff953
+                ) !important;
+
+                /* Firefox 3.6 - 15 */
+                background-image: -moz-linear-gradient(
+                    left,
+                    #fff953,
+                    #fff953
+                ) !important;
+
+                /* Opera 11.1 - 12 */
+                background-image: -o-linear-gradient(
+                    left,
+                    #fff953,
+                    #fff953
+                ) !important;
+
+                /* Opera 15+, Chrome 25+, IE 10+, Firefox 16+, Safari 6.1+, iOS 7+, Android 4.4+ */
+                background-image: linear-gradient(
+                    to right,
+                    #fff953,
+                    #fff953
+                ) !important;
+            }
+            @media (prefers-color-scheme: dark) {
+                .body {
+                    background-color: #1c1c1c !important;
+                    color: #ebebeb !important;
+                }
+
+                h1,
+                h2,
+                h3,
+                p,
+                td {
+                    color: #ebebeb !important;
+                }
+
+                .vertical-divider {
+                    background-color: linear-gradient(
+                        #fff953,
+                        #fff953
+                    ) !important;
+                    /* Fallback (could use .jpg/.png alternatively) */
+                    background-color: #fff953 !important;
+
+                    /* SVG fallback for IE 9 (could be data URI, or could use filter) */
+                    /* background-image: url(fallback-gradient.svg); */
+
+                    /* Safari 4, Chrome 1-9, iOS 3.2-4.3, Android 2.1-3.0 */
+                    background-image: -webkit-gradient(
+                        linear,
+                        left top,
+                        right top,
+                        from(#fff953),
+                        to(#fff953)
+                    ) !important;
+
+                    /* Safari 5.1, iOS 5.0-6.1, Chrome 10-25, Android 4.0-4.3 */
+                    background-image: -webkit-linear-gradient(
+                        left,
+                        #fff953,
+                        #fff953
+                    ) !important;
+
+                    /* Firefox 3.6 - 15 */
+                    background-image: -moz-linear-gradient(
+                        left,
+                        #fff953,
+                        #fff953
+                    ) !important;
+
+                    /* Opera 11.1 - 12 */
+                    background-image: -o-linear-gradient(
+                        left,
+                        #fff953,
+                        #fff953
+                    ) !important;
+
+                    /* Opera 15+, Chrome 25+, IE 10+, Firefox 16+, Safari 6.1+, iOS 7+, Android 4.4+ */
+                    background-image: linear-gradient(
+                        to right,
+                        #fff953,
+                        #fff953
+                    ) !important;
+                }
+
+                .divider {
+                    background-color: linear-gradient(
+                        #fff953,
+                        #fff953
+                    ) !important;
+                    /* Fallback (could use .jpg/.png alternatively) */
+                    background-color: #fff953 !important;
+
+                    /* SVG fallback for IE 9 (could be data URI, or could use filter) */
+                    /* background-image: url(fallback-gradient.svg); */
+
+                    /* Safari 4, Chrome 1-9, iOS 3.2-4.3, Android 2.1-3.0 */
+                    background-image: -webkit-gradient(
+                        linear,
+                        left top,
+                        right top,
+                        from(#fff953),
+                        to(#fff953)
+                    ) !important;
+
+                    /* Safari 5.1, iOS 5.0-6.1, Chrome 10-25, Android 4.0-4.3 */
+                    background-image: -webkit-linear-gradient(
+                        left,
+                        #fff953,
+                        #fff953
+                    ) !important;
+
+                    /* Firefox 3.6 - 15 */
+                    background-image: -moz-linear-gradient(
+                        left,
+                        #fff953,
+                        #fff953
+                    ) !important;
+
+                    /* Opera 11.1 - 12 */
+                    background-image: -o-linear-gradient(
+                        left,
+                        #fff953,
+                        #fff953
+                    ) !important;
+
+                    /* Opera 15+, Chrome 25+, IE 10+, Firefox 16+, Safari 6.1+, iOS 7+, Android 4.4+ */
+                    background-image: linear-gradient(
+                        to right,
+                        #fff953,
+                        #fff953
+                    ) !important;
+                }
+            }
+            @media screen and (max-width: 600px) {
+            }
+            @media screen and (max-width: 500px) {
+                .button {
+                    width: 140px;
+                }
+            }
+            @media screen and (max-width: 480px) {
+                .button {
+                    width: 100px;
+                }
+            }
+            @media screen and (max-width: 400px) {
+            }
+        </style>
+    </head>
+    <body>
+        <center class="wrapper">
+            <div class="webkit position-relative">
+                <table class="outer" align="center">
+                    <tr>
+                        <td align="center" class="no-padding">
+                            <table width="100%" class="top bottom-padding">
+                                <tr>
+                                    <td align="left">
+                                        <div class="logo">
+                                            <img
+                                                id="stclogo"
+                                                src="https://dl3.pushbulletusercontent.com/QWdR7FqlBGYNLQ9S1KpfyVO4am5prj0p/stc.png"
+                                                alt="Student Technical Community Logo"
+                                            />
+                                        </div>
+                                    </td>
+                                    <td align="right">
+                                        <div class="logo">
+                                            <img
+                                                id="snapchatlogo"
+                                                src="https://dl3.pushbulletusercontent.com/l9tE7JoiJRoQ49Ix63Bv1bskzLWZlx39/snapchat.png"
+                                                alt="Snapchat Logo"
+                                            />
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="no-padding">
+                            <table width="100%">
+                                <tr>
+                                    <td align="left">
+                                        <h1>Lensathon</h1>
+                                        <div class="divider"></div>
+                                    </td>
+                                    <td align="right">
+                                        <div class="button"></div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="no-padding">
+                            <table>
+                                <tr>
+                                    <td>
+                                        <br />
+                                        <strong>Greetings from STC-VIT,</strong>
+                                        <br />
+                                        <br />
+                                        Everyone loves using Snapchat Filters
+                                        but how many of you have actually made
+                                        one?<br />
+                                        You could make-
+                                        <br />
+                                        <br />
+                                        <strong>
+                                            3-D model lens with interesting
+                                            voice effects <br />
+                                            <br />
+                                            Simple segmentation lens <br />
+                                            <br />
+                                            Classic Snapchat cap filter
+                                        </strong>
+                                        <br />
+                                        <br />
+                                        using <strong>Lens Studio</strong> - the
+                                        exclusive software to make Snapchat
+                                        Lenses.
+                                        <br />
+                                        <br />
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <!-- <tr>
+                        <td>
+                            <table width="100%">
+                                <tr>
+                                    <td>
+                                        <table class="two-col">
+                                            <tr>
+                                                <td>
+                                                    <table class="col col-1">
+                                                        <tr>
+                                                            <td>
+                                                                <table
+                                                                    class="col-content-1"
+                                                                >
+                                                                    <tr>
+                                                                        <td
+                                                                            class="no-padding divider-cell"
+                                                                        >
+                                                                            <div
+                                                                                class="vertical-divider"
+                                                                            ></div>
+                                                                        </td>
+                                                                        <td
+                                                                            class="info-section"
+                                                                        >
+                                                                            <p
+                                                                                class="info-content"
+                                                                            >
+                                                                                Join
+                                                                                us
+                                                                                on
+                                                                                <strong>
+                                                                                    2nd
+                                                                                    May
+                                                                                    from
+                                                                                    4
+                                                                                    -
+                                                                                    5:30pm.
+                                                                                    <br />
+                                                                                    Contact
+                                                                                    Us:
+                                                                                    <br />
+                                                                                </strong>
+                                                                                Swarup:
+                                                                                <a
+                                                                                    href="tel:9766646882"
+                                                                                    class="number"
+                                                                                    >97666
+                                                                                    46882</a
+                                                                                >
+                                                                                <br />
+                                                                                Kishika:
+                                                                                <a
+                                                                                    href="tel:9652307172"
+                                                                                    class="number"
+                                                                                    >96523
+                                                                                    07172</a
+                                                                                >
+                                                                            </p>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                    <table class="col col-2">
+                                                        <tr>
+                                                            <td>
+                                                                <table
+                                                                    class="col-content-2"
+                                                                >
+                                                                    <tr>
+                                                                        <td>
+                                                                            <div
+                                                                                class="button"
+                                                                            >
+                                                                                <a
+                                                                                    href="https://forms.gle/CnX5Sx192NGhgmqV8"
+                                                                                >
+                                                                                    <img
+                                                                                        src="assets/register-button.png"
+                                                                                        alt="Register Now"
+                                                                                    />
+                                                                                </a>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr> -->
+                    <tr>
+                        <td class="no-padding">
+                            <table width="100%">
+                                <tr class="bottom-padding">
+                                    <td class="no-padding divider-cell">
+                                        <div class="vertical-divider"></div>
+                                    </td>
+                                    <td class="info-section">
+                                        <p class="info-content">
+                                            Join us on
+                                            <strong>
+                                                2nd May from 4 - 5:30pm. <br />
+                                                Contact Us: <br />
+                                            </strong>
+                                            Swarup:
+                                            <a
+                                                href="tel:9766646882"
+                                                class="number"
+                                                >97666 46882</a
+                                            >
+                                            <br />
+                                            Kishika:
+                                            <a
+                                                href="tel:9652307172"
+                                                class="number"
+                                                >96523 07172</a
+                                            >
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <div class="button">
+                                            <a
+                                                href="https://forms.gle/CnX5Sx192NGhgmqV8"
+                                            >
+                                                <img
+                                                    src="https://dl3.pushbulletusercontent.com/wj63tcOGQYTUNyr4c50SoUPs8yHDbI6M/register-button.png"
+                                                    alt="Register Now"
+                                                />
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="no-padding">
+                            <table class="no-padding">
+                                <tr>
+                                    <td>
+                                        <ul>
+                                            <li>
+                                                To help you realise all of these
+                                                creative possibilities STC-VIT
+                                                is organising a fun and
+                                                informative workshop on Snapchat
+                                                Lenses.
+                                            </li>
+                                            <li>
+                                                There you will get to learn how
+                                                to make your very own Snapchat
+                                                Lens from an Expert from
+                                                Snapchat itself!
+                                            </li>
+                                            <li>
+                                                This will be followed by a fun
+                                                contest where you stand to win
+                                                exciting prizes and schwag!
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="no-padding">
+                            <table width="100%">
+                                <tr>
+                                    <td align="left" class="final-section">
+                                        <div class="final-message">
+                                            Don't miss this opportunity!
+                                        </div>
+                                        <div class="socials">
+                                            <a
+                                                href="https://www.facebook.com/mstcvit/"
+                                                class="icon"
+                                            >
+                                                <img
+                                                    src="https://dl3.pushbulletusercontent.com/ELm2fuChQiNLMI5LQwXDkg6rpt01nAC4/facebook.png"
+                                                    alt="Facebook Logo"
+                                                    class="socials-logo"
+                                                />
+                                            </a>
+                                            <a
+                                                href="https://www.instagram.com/stcvit/"
+                                                class="icon"
+                                            >
+                                                <img
+                                                    src="https://dl3.pushbulletusercontent.com/BQpSmXZU25MVQXLaFBIykHZTJp2OcAnJ/insta.png"
+                                                    alt="Instagram Logo"
+                                                    class="socials-logo"
+                                                />
+                                            </a>
+                                            <a
+                                                href="https://www.linkedin.com/company/micvitvellore"
+                                                class="icon"
+                                            >
+                                                <img
+                                                    src="https://dl3.pushbulletusercontent.com/OpJWFEftBEDj36IfUD7j3UjNIGucf3lO/linkedin.png"
+                                                    alt="Linkedin Logo"
+                                                    class="socials-logo"
+                                                />
+                                            </a>
+                                        </div>
+                                    </td>
+                                    <td align="right" class="no-padding">
+                                        <span class="image-container">
+                                            <img
+                                                src="https://dl3.pushbulletusercontent.com/p1Iid8dYHgi4zMnmfwKHhNrLqOlRqZvD/decoration-girl.png"
+                                                alt="Girl greeting"
+                                                class="decoration-girl"
+                                            />
+                                        </span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div>
+                <br />
+                <a href="" style="color: #335577; text-decoration: underline"
+                    >If this email hasn't rendered properly click here</a
+                >
+            </div>
+        </center>
+    </body>
+</html>
